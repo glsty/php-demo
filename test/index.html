@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>测试</title>
+</head>
+<body>
+	<input type="file" id="upload" multiple="" accept="*/*">
+  <script src="jq.js"></script>
+  <script>
+    
+    $(function(){
+      $("#upload").change(function(){
+        var file = $(this).get(0).files;
+
+        console.log(file);
+        console.log(file[0]);
+
+         var formData = new FormData();
+         for (var i = file.length - 1; i >= 0; i--) {
+           formData.append("fonts"+i,file[i]);
+         }
+         console.log(formData)
+          $.ajax({
+            url:'test.php',
+            type:'post',
+            data:formData,
+            dataType:'json',
+            processData:false,
+            contentType:false,
+            success:function(res){
+              console.log(res)
+              for (var i = res.length - 1; i >= 0; i--) {
+                    console.log(res[i])
+                   }
+            },
+            error:function(err){
+              console.log(err)
+            }
+          })
+      })
+    })
+  </script>
+</body>
+</html>
