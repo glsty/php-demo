@@ -6,6 +6,11 @@
 </head>
 <body>
 	<input type="file" id="upload" multiple="" accept="*/*">
+
+
+  <div id="test" class="c">{{ a }}</div>
+
+  <script src="js/test.js"></script>
   <script src="jq.js"></script>
   <script>
     
@@ -40,6 +45,12 @@
           })
       })
     })
+
+    var data = {
+        a:'hello world'
+    };
+    new Compile('#test',data);
+   
   </script>
 </body>
 </html>
